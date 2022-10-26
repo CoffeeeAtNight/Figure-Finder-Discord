@@ -1,11 +1,16 @@
 class Storage():
   # product search url
-  URL = "https://figuya.com/en/search?query="
+  targetUrl = 'https://www.allblue-world.de/search?q='
 
   # when searching a product (css classes)
-  productBox = 'chakra-linkbox'
-  productImg = 'chakra-aspect-ratio img' # research how to get src="" tag
-  productTitle = 'css-1hnz6hu'
-  productPrice = 'css-1ykfz6g' 
-  productStatus = 'chakra-badge' # possible values : In stock, Preorder, order stop
+  productBox = 'product--box'
+  productImg = 'image--media' # research how to get src="" tag
+  productTitle = 'tooltipp'
+  productPrice = 'price--default' 
+
+  productStatus = 'product--badge'
+  productAvailable = 'badge--instock'
+  productSoldOut = 'badge--soldout'
+  productPreOrder = 'badge--preorder'
+  productOrderStop = 'badge--orderstop'
   ####################
