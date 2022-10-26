@@ -9,6 +9,7 @@ from discord.ext import commands
 from bs4 import BeautifulSoup
 
 load_dotenv()
+storage = Storage()
 TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client(intents=discord.Intents.all())
 client = commands.Bot(intents=discord.Intents.all(), command_prefix="%")
@@ -24,7 +25,7 @@ async def on_ready():
 
 @client.command()
 async def fetchPage(ctx, arg):
-    URL = Storage().URL + arg    # Set the searching url with the given argument as query param
+    URL = storage.URL + arg    # Set the searching url with the given argument as query param
     website = requests.get(URL)
     results = BeautifulSoup(website.content, 'html.parser')     # Parse response to an usable object
 
