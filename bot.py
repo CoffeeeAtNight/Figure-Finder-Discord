@@ -3,6 +3,7 @@ import os
 
 import discord
 import requests
+from storage import Storage
 from dotenv import load_dotenv
 from discord.ext import commands
 from bs4 import BeautifulSoup
@@ -16,9 +17,14 @@ client = commands.Bot(intents=discord.Intents.all(), command_prefix="%")
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
+### Change target site to FIGUYA.DE
+### Maybe let user toggle the sites between FIGUYA and ALLBLUE later on
+### 
+
+
 @client.command()
 async def fetchPage(ctx, arg):
-    URL = 'https://www.allblue-world.de/search?p=1&q=' + arg    # Set the searching url with the given argument as query param
+    URL = Storage().URL + arg    # Set the searching url with the given argument as query param
     website = requests.get(URL)
     results = BeautifulSoup(website.content, 'html.parser')     # Parse response to an usable object
 
